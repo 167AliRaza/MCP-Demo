@@ -1,0 +1,5 @@
+.venv
+.env
+/mcp-test.py
+/server.py
+/stdio_server.py

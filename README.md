@@ -1,1 +1,1 @@
-# MCP-Demo
+# MCP-Server for Realtime Weather Fetching
