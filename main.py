@@ -277,24 +277,23 @@ def decode_weather_code(code: int) -> str:
 
 
 
-app = FastAPI(title="Weather Forecast MCP Server")
+# app = FastAPI(title="Weather Forecast MCP Server")
 
-# Mount MCP first
-app.mount("/mcp", mcp.sse_app())
+# # Mount MCP first
+# app.mount("/mcp", mcp.sse_app())
 
-@app.get("/")
-async def root():
-    return {
-        "message": "Weather-Forecast-MCP-Server-API is running",
-        "endpoints": {
-            "/mcp": "MCP streaming endpoint",
-            "/docs": "Swagger UI for testing",
-        },
-    }
+# @app.get("/")
+# async def root():
+#     return {
+#         "message": "Weather-Forecast-MCP-Server-API is running",
+#         "endpoints": {
+#             "/mcp": "MCP streaming endpoint",
+#             "/docs": "Swagger UI for testing",
+#         },
+#     }
 
 
 
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    mcp.run(transport="sse", host="0.0.0.0", port=8000)
