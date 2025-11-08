@@ -7,14 +7,14 @@ A Model Context Protocol (MCP) server that provides current and historical weath
 - 🌤️ Current weather data with 13+ parameters
 - 📊 Historical weather data (up to years of history)
 - 🌍 Global coverage for any city
-- 🔄 RESTful API and MCP SSE endpoints
+- 🔄 MCP http with SSE Async endpoint
 - ⚡ Fast and reliable (powered by Open-Meteo)
 
 ## Quick Start
 
 ### Using the Public Server
 
-**Server URL:** `https://your-deployed-url.com/mcp`
+**Server URL:** `https://weather-mcp.fastmcp.app/mcp`
 
 ### Integration with Claude Desktop
 
@@ -24,7 +24,7 @@ Add to your `claude_desktop_config.json`:
 {
   "mcpServers": {
     "weather": {
-      "url": "https://your-deployed-url.com/mcp"
+      "url": "https://weather-mcp.fastmcp.app/mcp"
     }
   }
 }
@@ -35,7 +35,7 @@ Add to your `claude_desktop_config.json`:
 ```python
 from mcp import ClientSession
 
-async with ClientSession("https://your-deployed-url.com/mcp") as session:
+async with ClientSession("https://weather-mcp.fastmcp.app/mcp") as session:
     result = await session.call_tool(
         "get_weather_data",
         city_name="London",
@@ -44,31 +44,6 @@ async with ClientSession("https://your-deployed-url.com/mcp") as session:
     print(result)
 ```
 
-## API Usage
-
-### Get Current Weather
-
-```bash
-curl -X POST https://your-deployed-url.com/mcp/tools/get_weather_data \
-  -H "Content-Type: application/json" \
-  -d '{
-    "city_name": "London",
-    "query_type": "current"
-  }'
-```
-
-### Get Historical Weather
-
-```bash
-curl -X POST https://your-deployed-url.com/mcp/tools/get_weather_data \
-  -H "Content-Type: application/json" \
-  -d '{
-    "city_name": "Paris",
-    "query_type": "historical",
-    "start_date": "2024-10-01",
-    "end_date": "2024-10-31"
-  }'
-```
 
 ## Tool Documentation
 
@@ -200,6 +175,6 @@ MIT License - feel free to use in your projects!
 
 ## Support
 
-- 📧 Email: your-email@example.com
+- 📧 Email: 167aliraza@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/yourusername/weather-mcp-server/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/weather-mcp-server/discussions)
