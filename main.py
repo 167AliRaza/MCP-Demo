@@ -2,9 +2,8 @@ import requests
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
 import json
-from fastapi import FastAPI
+import asyncio
 from mcp.server.fastmcp import FastMCP
-import uvicorn
 
 # Initialize FastMCP
 mcp = FastMCP("Weather-Forecast-MCP-Server")
@@ -275,7 +274,12 @@ def decode_weather_code(code: int) -> str:
     """Helper function to decode weather codes"""
     return WEATHER_CODES.get(code, f"Unknown ({code})")
 
+async def main():
+    # Use run_async() in async contexts
+    await mcp.run_async(transport="http", port=8000)
 
+if __name__ == "__main__":
+    asyncio.run(main())
 
 # app = FastAPI(title="Weather Forecast MCP Server")
 
@@ -292,7 +296,5 @@ def decode_weather_code(code: int) -> str:
 #         },
 #     }
 
-
-
-if __name__ == "__main__":
-    mcp.run(transport="http") 
+# if __name__ == "__main__":
+#     mcp.run(transport="http") 

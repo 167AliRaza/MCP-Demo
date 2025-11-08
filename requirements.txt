@@ -1,5 +1,0 @@
-fastapi[standard]
-mcp[cli]
-requests
-uvicorn
-mcp
